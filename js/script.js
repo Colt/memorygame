@@ -44,17 +44,19 @@ for (var i=0; i < 12; i++) {
 
 
 	var divs = document.querySelectorAll("div");
+	var cardType;
 
 	for(var i=0; i < divs.length; i++) {
 		divs[i].addEventListener("click", function() {
 		var image = this.querySelector("img");
+		image.classList.add('revealImg');
 
-		if(isSame && isSame !== image) {
-			image.classList.add('revealImg');
-			window.location.reload();
-		} else if (!isSame) {
-			image.classList.add('revealImg');
-			var isSame = image;
+		currentType = image.getAttribute("src");
+		
+		if(!cardType) {
+			cardType = currentType;
+		} else if(currentType !== cardType) {
+			image.classList.add('hideImg');
 		}
 	});
 } //for loop

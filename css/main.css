@@ -16,12 +16,30 @@ img {
 }
 
 .hidden {
-	visibility: hidden
+	visibility: hidden;
 }
 
 .revealImg {
-	visibility: visible;
+	-webkit-transition: .4s;
+  -moz-transition: .4s;
+  -ms-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+  -webkit-transform: rotateY(180deg);
+  visibility: visible;
 }
+
+.hideImg {
+	-webkit-animation-delay: 5s;
+	-webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+    -webkit-transform: rotateY(270deg);
+
+}
+
 
 
 /*Class*/
