@@ -2,7 +2,12 @@
 
 body {
 	text-align: center;
+/*	background-color: #a8d8f0;
+*/	background-image: url(../img/background.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
 	background-color: #a8d8f0;
+	font-family: "HelveticaNeue-Light";
 }
 
 img {
@@ -26,6 +31,7 @@ img {
 	width: 80%;
 	margin-left: 18%;
 }
+
 
 
 

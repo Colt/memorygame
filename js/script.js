@@ -48,9 +48,15 @@ for (var i=0; i < 12; i++) {
 	for(var i=0; i < divs.length; i++) {
 		divs[i].addEventListener("click", function() {
 		var image = this.querySelector("img");
- 		image.classList.add('revealImg');
-	});
 
+		if(isSame && isSame !== image) {
+			image.classList.add('revealImg');
+			window.location.reload();
+		} else if (!isSame) {
+			image.classList.add('revealImg');
+			var isSame = image;
+		}
+	});
 } //for loop
 
 
