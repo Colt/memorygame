@@ -1,0 +1,33 @@
+/*Tag Selectors*/
+
+body {
+	text-align: center;
+	background-color: #a8d8f0;
+}
+
+img {
+	width: 200px;
+	height: 200px;
+}
+
+.hidden {
+	visibility: hidden
+}
+
+.revealImg {
+	visibility: visible;
+}
+
+
+/*Class*/
+
+.center {
+	position: relative;
+	width: 80%;
+	margin-left: 18%;
+}
+
+
+
+
+/*ID*/
