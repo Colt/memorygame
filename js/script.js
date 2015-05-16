@@ -39,25 +39,54 @@ for (var i=0; i < 12; i++) {
 
 			var image = tile.querySelector("img");
 			image.setAttribute("src", randomImage());
-			image.classList.add('hidden');
+			image.classList.add("rotateY");
+
 	} //for loop
 
 
 	var divs = document.querySelectorAll("div");
 	var cardType;
+	var count = 0;
+	var divsCalled = [];
 
-	for(var i=0; i < divs.length; i++) {
-		divs[i].addEventListener("click", function() {
+
+	for(var j=0; j < divs.length; j++) {
+		divs[j].addEventListener("click", function() {
 		var image = this.querySelector("img");
 		image.classList.add('revealImg');
+		image.setAttribute("id", "called");
+		image.classList.remove('hideImg');
+
+		// image.classList.remove("rotateY");
+
 
 		currentType = image.getAttribute("src");
-		
-		if(!cardType) {
-			cardType = currentType;
-		} else if(currentType !== cardType) {
-			image.classList.add('hideImg');
-		}
+		var shine = "shine" + currentType;
+		// keep track of the divs called
+
+			if(count === 0) {
+				cardType = currentType;
+				divsCalled.push(cardType);
+				count += 1;
+			} else if(currentType !== cardType) {
+				var allCalled = document.querySelectorAll("#called");
+					for(var x=0; x < allCalled.length; x++) {
+						allCalled[x].classList.add("hideImg");
+						allCalled[x].classList.remove("revealImg");
+					}
+				divsCalled = [];
+				count = 0;
+			} else if(currentType === cardType) {
+				// image.setAttribute("src", shine);
+				divsCalled.push(cardType);
+				count = 0;
+			}//if statement
+
+
+			if(divsCalled.length === 12) {
+				console.log("VICTORY!");
+			}
+
 	});
 } //for loop
 
