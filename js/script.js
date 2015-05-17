@@ -90,7 +90,7 @@ for (var i=0; i < 12; i++) {
 
 
 			if(divsCalled.length === 12) {
-				console.log("VICTORY!");
+				
 			}
 
 	});
