@@ -35,7 +35,7 @@ img {
 }
 
 .rotateY {
-	-webkit-transform: rotateY(80deg);
+	-webkit-transform: rotateY(90deg);
 }
 
 .revealImg {
@@ -50,7 +50,7 @@ img {
 
 
 .hideImg {
-	-webkit-transform: rotateY(340deg);
+	-webkit-transform: rotateY(360deg);
 	-webkit-animation: hideImgAnimation .5s;
 	-webkit-animation-fill-mode: forwards;
 	-webkit-animation-delay: .9s;
@@ -59,8 +59,7 @@ img {
   
 @-webkit-keyframes hideImgAnimation {
      0%   {-webkit-transform: rotateY(0deg);}
-     70%  {-webkit-transform: rotateY(0deg);}
-     90%  {-webkit-transform: rotateY(270deg);}
+     80%  {-webkit-transform: rotateY(0deg);}
      100% {-webkit-transform: rotateY(270deg);}
 }
 

@@ -6,6 +6,14 @@
 						"img/card5.jpg", "img/card6.jpg"];
 
 
+		var resetClass = function(x) {
+	  		setTimeout(function(){
+	  			x.className = "rotateY";
+
+	  		}, 1600);
+		};
+
+
 function randomImage() {
 	var count = 0;
 		while(count < 1) {
@@ -54,10 +62,8 @@ for (var i=0; i < 12; i++) {
 		divs[j].addEventListener("click", function() {
 		var image = this.querySelector("img");
 		image.classList.add('revealImg');
-		image.setAttribute("id", "called");
+		image.classList.add("called");
 		image.classList.remove('hideImg');
-
-		// image.classList.remove("rotateY");
 
 
 		currentType = image.getAttribute("src");
@@ -69,10 +75,10 @@ for (var i=0; i < 12; i++) {
 				divsCalled.push(cardType);
 				count += 1;
 			} else if(currentType !== cardType) {
-				var allCalled = document.querySelectorAll("#called");
+				var allCalled = document.querySelectorAll(".called");
 					for(var x=0; x < allCalled.length; x++) {
 						allCalled[x].classList.add("hideImg");
-						allCalled[x].classList.remove("revealImg");
+						resetClass(allCalled[x]);
 					}
 				divsCalled = [];
 				count = 0;
