@@ -69,7 +69,6 @@ for (var i=0; i < 12; i++) {
 
 		currentType = image.getAttribute("src");
 		var shine = "shine" + currentType;
-		// keep track of the divs called
 
 			if(count === 0) {
 				cardType = currentType;
@@ -84,7 +83,7 @@ for (var i=0; i < 12; i++) {
 				divsCalled = [];
 				count = 0;
 			} else if(currentType === cardType) {
-				// image.setAttribute("src", shine);
+				image.setAttribute("src", shine);
 				divsCalled.push(cardType);
 				count = 0;
 			}//if statement
