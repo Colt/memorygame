@@ -9,7 +9,6 @@
 		var resetClass = function(x) {
 	  		setTimeout(function(){
 	  			x.className = "rotateY";
-
 	  		}, 1600);
 		};
 
@@ -29,25 +28,27 @@ function randomImage() {
 	return chars[rand];
 } //randomImage
 
+var backWin = document.querySelector(".winnerOuter");
+var frontWin = document.querySelector(".winnerInner");
 
 // randomly select twice the same card
 
 for (var i=0; i < 12; i++) {
-		var tile = document.createElement("DIV");
-		var imgTag = document.createElement("IMG");
-		var body = document.querySelector(".center");
+	var tile = document.createElement("DIV");
+	var imgTag = document.createElement("IMG");
+	var body = document.querySelector(".center");
 
-			body.appendChild(tile);
-			tile.style.width = "200px";
-			tile.style.float = "left";
-			tile.style.height = "200px";
-			tile.style.border = "1px solid #487890";
-			tile.style.margin = "0.5px";
-			tile.appendChild(imgTag);
+		body.appendChild(tile);
+		tile.style.width = "200px";
+		tile.style.float = "left";
+		tile.style.height = "200px";
+		tile.style.border = "1px solid #487890";
+		tile.style.margin = "0.5px";
+		tile.appendChild(imgTag);
 
-			var image = tile.querySelector("img");
-			image.setAttribute("src", randomImage());
-			image.classList.add("rotateY");
+		var image = tile.querySelector("img");
+		image.setAttribute("src", randomImage());
+		image.classList.add("rotateY"); // CHEAT LINE (comment it out if you wanna see all the cards)
 
 	} //for loop
 
@@ -90,10 +91,22 @@ for (var i=0; i < 12; i++) {
 
 
 			if(divsCalled.length === 12) {
-				
+				backWin.classList.add("fadeIn");
+				frontWin.classList.add("bounce");
 			}
-
 	});
 } //for loop
+
+	backWin.addEventListener("click", function() {
+		backWin.className = "winnerOuter";
+		frontWin.className = "winnerInner";
+	});
+
+	frontWin.addEventListener("click", function() {
+		frontWin.className = "winnerInner";
+		backWin.className = "winnerOuter";
+	});
+
+
 
 
