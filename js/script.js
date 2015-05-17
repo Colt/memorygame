@@ -6,11 +6,17 @@
 						"img/card5.jpg", "img/card6.jpg"];
 
 
-		var resetClass = function(x) {
-	  		setTimeout(function(){
-	  			x.className = "rotateY";
-	  		}, 1600);
-		};
+	var resetClassDivs = function(x) {
+  		setTimeout(function(){
+  			x.className = "rotateY";
+  		}, 1600);
+	};
+
+	var resetBubble = function(x) {
+  		setTimeout(function(){
+  			x.className = "bubble";
+  		}, 1900);
+	};
 
 
 function randomImage() {
@@ -68,7 +74,6 @@ for (var i=0; i < 12; i++) {
 
 
 		currentType = image.getAttribute("src");
-		var shine = "shine" + currentType;
 
 			if(count === 0) {
 				cardType = currentType;
@@ -78,12 +83,11 @@ for (var i=0; i < 12; i++) {
 				var allCalled = document.querySelectorAll(".called");
 					for(var x=0; x < allCalled.length; x++) {
 						allCalled[x].classList.add("hideImg");
-						resetClass(allCalled[x]);
+						resetClassDivs(allCalled[x]);
 					}
 				divsCalled = [];
 				count = 0;
 			} else if(currentType === cardType) {
-				image.setAttribute("src", shine);
 				divsCalled.push(cardType);
 				count = 0;
 			}//if statement
@@ -104,6 +108,15 @@ for (var i=0; i < 12; i++) {
 	frontWin.addEventListener("click", function() {
 		frontWin.className = "winnerInner";
 		backWin.className = "winnerOuter";
+	});
+
+
+var squeeze = document.querySelector(".squeeze");
+
+	squeeze.addEventListener("click", function() {
+		var helloBubble = document.querySelector("#hello");
+		helloBubble.classList.add("float");
+		resetBubble(helloBubble);
 	});
 
 
