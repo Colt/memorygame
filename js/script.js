@@ -141,7 +141,7 @@ for (var i=0; i < 12; i++) {
 				count = 0;
 				
 				if(!scoreNum <= 0) {
-					scoreNum -= 5;
+					scoreNum -= 3;
 					score.innerHTML = scoreNum;
 				}
 
