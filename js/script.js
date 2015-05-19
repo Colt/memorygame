@@ -30,7 +30,7 @@
 
 
 	var removeShine = function(square1, square2, square3) {
-  		setTimeout(function(){
+  		setTimeout (function(){
   			square1.classList.remove("shine");
   			if (square2) {square2.classList.remove("shine");}
   			if (square3) {square3.classList.remove("shine");}
@@ -166,6 +166,9 @@ for (var i=0; i < 12; i++) {
   		}, 150);
 	})(6);
 
+	setInterval (function() {
+		hints();
+	}, 5000);
 
 
 
@@ -187,7 +190,6 @@ for (var i=0; i < 12; i++) {
 				divsCalled.push(cardType);
 				count += 1;
 			} else if(currentType !== cardType) {
-				hints();
 				var allCalled = document.querySelectorAll(".called");
 					for(var x=0; x < allCalled.length; x++) {
 						allCalled[x].classList.add("hideImg");
