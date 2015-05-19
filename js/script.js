@@ -1,4 +1,6 @@
-// JS FUN
+// MemoryGame 
+
+ // ¯\_(ツ)_/¯ Hi! I'm Cody, I will help you navigate the code.
 
 	var totalClick = 0;
 	var freq = {};
@@ -36,6 +38,44 @@
 	};
 
 
+		var buzzIt = function(square1, square2, square3) {
+  			square1.classList.add("buzzIt");
+  			if (square2) {square2.classList.add("buzzIt");}
+  			if (square3) {square3.classList.add("buzzIt");}
+  			removeBuzzIt(square1, square2, square3);
+	};
+
+		var removeBuzzIt = function(square1, square2, square3) {
+  		setTimeout(function(){
+  			square1.classList.remove("buzzIt");
+  			if (square2) {square2.classList.remove("buzzIt");}
+  			if (square3) {square3.classList.remove("buzzIt");}
+  		}, 1000);
+	};
+
+
+	var hints = function() {
+		setTimeout(function(){
+		var center = document.body.querySelector(".center");
+		var images = center.querySelectorAll("img");
+		var rand = Math.floor(Math.random()*12);
+		var imageOne = images[rand];
+		var srcOne = imageOne.getAttribute("src");
+		console.log(imageOne);
+		console.log(srcOne);
+		var imageTwo;
+		var srcTwo;
+		
+		for(var d=0; d<images.length; d++) {
+			imageTwo = images[d];
+			srcTwo = imageTwo.getAttribute("src");
+				if(srcOne === srcTwo) {
+					buzzIt(imageOne.parentElement, imageTwo.parentElement);
+				}//if statement
+			}//forLoop
+		}, 1500)//setTimeout
+	}//hints
+
 
 	
 function randomImage() {
@@ -51,20 +91,22 @@ function randomImage() {
 			}//if statement
 		} //while loop
 	return chars[rand];
-} //randomImage
+}//randomImage
 
 var backWin = document.querySelector(".winnerOuter");
 var frontWin = document.querySelector(".winnerInner");
 
 // randomly select twice the same card
 
-for (var i=0; i < 12; i++) {
+createGrid();
 
+function createGrid() {
+for (var i=0; i < 12; i++) {
 	var tile = document.createElement("DIV");
 	var imgTag = document.createElement("IMG");
-	var body = document.querySelector(".center");
+	var bodyGrid = document.querySelector(".center");
 
-		body.appendChild(tile);
+		bodyGrid.appendChild(tile);
 		tile.style.width = "200px";
 		tile.style.float = "left";
 		tile.style.height = "200px";
@@ -74,8 +116,12 @@ for (var i=0; i < 12; i++) {
 		var image = tile.querySelector("img");
 		image.setAttribute("src", randomImage());
 		image.classList.add("rotateY"); // CHEAT LINE (comment it out if you wanna see all the cards)
+	}//forLoop
+}//createGrid
 
-	} //for loop
+
+
+
 
 
 	var divs = document.querySelectorAll("div");
@@ -89,8 +135,15 @@ for (var i=0; i < 12; i++) {
 	score.innerHTML = scoreNum;
 	won.innerHTML = wonNum;
 
-	var prisma = [[0], [4,1], [8,5,2], [19,6,3], [10,7], [11]];
-							
+
+
+	// function removeGrid() {
+	// 	var center = document.body.querySelector(".center");
+	// 	var squares = center.querySelectorAll("div");
+	// 	center.remove(squares);
+	// 		createGrid();
+	// 				}//removeGrid
+
 		
 	(function theLoop (i) {
   		setTimeout(function () {
@@ -117,13 +170,15 @@ for (var i=0; i < 12; i++) {
 
 
 
-	for(var j=0; j < divs.length; j++) {
-		divs[j].addEventListener("click", function() {
-		var image = this.querySelector("img");
-		image.classList.add('revealImg');
-		image.classList.add("called");
-		score.innerHTML = scoreNum;
-		won.innerHTML = wonNum;
+	// for(var j=0; j < divs.length; j++) {
+		var grid = document.querySelector(".center");
+
+		grid.addEventListener("click", function(evt) {
+			image = evt.path[0].querySelector("img");
+			image.classList.add('revealImg');
+			image.classList.add("called");
+			score.innerHTML = scoreNum;
+			won.innerHTML = wonNum;
 
 		currentType = image.getAttribute("src");
 
@@ -132,6 +187,7 @@ for (var i=0; i < 12; i++) {
 				divsCalled.push(cardType);
 				count += 1;
 			} else if(currentType !== cardType) {
+				hints();
 				var allCalled = document.querySelectorAll(".called");
 					for(var x=0; x < allCalled.length; x++) {
 						allCalled[x].classList.add("hideImg");
@@ -141,7 +197,7 @@ for (var i=0; i < 12; i++) {
 				count = 0;
 				
 				if(!scoreNum <= 0) {
-					scoreNum -= 3;
+					scoreNum -= 5;
 					score.innerHTML = scoreNum;
 				}
 
@@ -156,12 +212,13 @@ for (var i=0; i < 12; i++) {
 			if(divsCalled.length === 12) {
 				backWin.classList.add("fadeIn");
 				frontWin.classList.add("bounce");
+				scoreNum += 40;
 				wonNum += 1;
 				won.innerHTML = wonNum;
 			}
 	});
 
-} //for loop
+// } //for loop
 
 	backWin.addEventListener("click", function() {
 		backWin.className = "winnerOuter";
@@ -171,6 +228,8 @@ for (var i=0; i < 12; i++) {
 	frontWin.addEventListener("click", function() {
 		frontWin.className = "winnerInner";
 		backWin.className = "winnerOuter";
+		// removeGrid();
+
 	});
 
 
