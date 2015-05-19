@@ -69,7 +69,7 @@
 		for(var d=0; d<images.length; d++) {
 			imageTwo = images[d];
 			srcTwo = imageTwo.getAttribute("src");
-				if(srcOne === srcTwo) {
+				if(srcOne === srcTwo && !imageOne.classList.contains('called')) {
 					buzzIt(imageOne.parentElement, imageTwo.parentElement);
 				}//if statement
 			}//forLoop
